@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/CodeDistillery/rancher-letsencrypt/letsencrypt"
+	"github.com/CodeDistillery/rancher-letsencrypt/rancher"
 	"github.com/Sirupsen/logrus"
-	"github.com/janeczku/rancher-letsencrypt/letsencrypt"
-	"github.com/janeczku/rancher-letsencrypt/rancher"
 )
 
 const (
