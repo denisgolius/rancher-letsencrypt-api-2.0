@@ -7,7 +7,7 @@
 PROJECT := rancher-letsencrypt
 PLATFORMS := linux
 ARCH := amd64
-DOCKER_IMAGE := janeczku/$(PROJECT)
+DOCKER_IMAGE := denisgolius/$(PROJECT)
 
 VERSION := $(shell cat VERSION)
 SHA := $(shell git rev-parse --short HEAD)
@@ -26,7 +26,9 @@ help:
 	@echo "make version - show app version"
 
 build: build-dir
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-X main.Version=$(VERSION) -X main.Git=$(SHA)" -o build/$(PROJECT)-linux-amd64
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/$(PROJECT)-linux-amd64
+#-gccgoflags "-X main.Version=$(VERSION) -X main.Git=$(SHA)" -o build/$(PROJECT)-linux-amd64
+#	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-X main.Version=$(VERSION) -X main.Git=$(SHA)" -o build/$(PROJECT)-linux-amd64
 
 deps:
 	go get github.com/c4milo/github-release
